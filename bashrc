@@ -98,4 +98,3 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-alias notify='notifo_cli.py -u serialx -s apikey -n foo'
