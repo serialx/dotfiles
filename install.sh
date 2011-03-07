@@ -16,6 +16,7 @@ if [ -x /usr/bin/git ]; then
     cp $WORK_DIR/tmux.conf ~/.tmux.conf
     cp $WORK_DIR/vimrc ~/.vimrc
     cp -r $WORK_DIR/vim ~/.vim
+    rm -r $WORK_DIR
 else
     echo 'Please install git to continue.'
     exit
