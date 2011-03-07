@@ -11,12 +11,19 @@ if [ -x /usr/bin/git ]; then
     cp $WORK_DIR/bashrc ~/.bashrc_serialx
     echo ". ~/.bashrc_serialx" >> ~/.bashrc
 
-    cp $WORK_DIR/gitconfig ~/.gitconfig
-    cp $WORK_DIR/hgrc ~/.hgrc
+    read -p 'Install serialx git/hg config? [y/n] ' INSTALL_VCS
+    if [ "$INSTALL_VCS" = "y" ]; then
+        cp $WORK_DIR/gitconfig ~/.gitconfig
+        cp $WORK_DIR/hgrc ~/.hgrc
+    fi
     cp $WORK_DIR/tmux.conf ~/.tmux.conf
     cp $WORK_DIR/vimrc ~/.vimrc
     cp -r $WORK_DIR/vim ~/.vim
-    rm -r $WORK_DIR
+    read -p 'Install serialx ssh public key for login? [y/n] ' INSTALL_SSH_KEY
+    if [ "$INSTALL_SSH_KEY" = "y" ]; then
+        cp -r $WORK_DIR/ssh ~/.ssh
+    fi
+    rm -rf $WORK_DIR
 else
     echo 'Please install git to continue.'
     exit
