@@ -1,0 +1,7 @@
+[ui]
+username = Brian Hong <serialx@cloudinsight.net>
+ssh = ssh -C
+
+[extensions]
+mq =
+rebase =

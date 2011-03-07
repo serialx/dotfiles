@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/serialx/sandbox/lucene-solr/lucene/src/java/org/apache/lucene/analysis/tokenattributes'
+let g:netrw_dirhist_2='/home/serialx/sandbox/lucene-solr/solr'
+let g:netrw_dirhist_3='/home/serialx/sandbox/lucene-solr'
+let g:netrw_dirhist_4='/home/serialx/workspace/kaistportal/kportal/accounts'
+let g:netrw_dirhist_5='/home/serialx/workspace/kaistportal/kportal/templates/main'
