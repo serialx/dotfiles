@@ -2,11 +2,13 @@
 
 
 echo 'Settings up dotfiles...'
-if [ -x /usr/bin/git ]; then
+if [ -x /bin/tar ]; then
     WORK_DIR=/tmp/__dotfiles
-    git clone git://github.com/serialx/dotfiles.git $WORK_DIR
-
-    WGET_OPT='--no-check-certificate'
+    WORK_FILE=/tmp/__dotfiles.tar.gz
+    curl -L https://github.com/serialx/dotfiles/tarball/master > $WORK_FILE
+    mkdir -p $WORK_DIR
+    tar -zxvf $WORK_FILE --directory $WORK_DIR
+    mv $WORK_DIR/serialx-dotfiles*/* $WORK_DIR
 
     cp $WORK_DIR/bashrc ~/.bashrc_serialx
     echo ". ~/.bashrc_serialx" >> ~/.bashrc
@@ -23,9 +25,10 @@ if [ -x /usr/bin/git ]; then
     if [ "$INSTALL_SSH_KEY" = "y" ]; then
         cp -r $WORK_DIR/ssh ~/.ssh
     fi
+    rm $WORK_FILE
     rm -rf $WORK_DIR
 else
-    echo 'Please install git to continue.'
+    echo 'Please install tar/gz to continue.'
     exit
 fi
 
