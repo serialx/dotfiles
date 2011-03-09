@@ -1,3 +1,7 @@
 [user]
 	name = Brian Hong
 	email = serialx.net@gmail.com
+
+[alias]
+	ci = commit
+	st = status
