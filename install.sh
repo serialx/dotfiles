@@ -25,6 +25,12 @@ if [ -x /bin/tar ]; then
     if [ "$INSTALL_SSH_KEY" = "y" ]; then
         cp -r $WORK_DIR/ssh ~/.ssh
     fi
+
+    echo 'Setting up woof.py'
+    mkdir -p ~/bin
+    cp $WORK_DIR/bin/woof ~/bin
+    chown +x ~/bin/woof
+
     rm $WORK_FILE
     rm -rf $WORK_DIR
 else
