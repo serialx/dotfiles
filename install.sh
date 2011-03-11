@@ -7,7 +7,7 @@ if [ -x /bin/tar ]; then
     WORK_FILE=/tmp/__dotfiles.tar.gz
     curl -L https://github.com/serialx/dotfiles/tarball/master > $WORK_FILE
     mkdir -p $WORK_DIR
-    tar -zxvf $WORK_FILE --directory $WORK_DIR
+    tar -zxf $WORK_FILE --directory $WORK_DIR
     mv $WORK_DIR/serialx-dotfiles*/* $WORK_DIR
 
     cp $WORK_DIR/bashrc ~/.bashrc_serialx
@@ -29,7 +29,7 @@ if [ -x /bin/tar ]; then
     echo 'Setting up woof.py'
     mkdir -p ~/bin
     cp $WORK_DIR/bin/woof ~/bin
-    chown +x ~/bin/woof
+    chmod +x ~/bin/woof
 
     rm $WORK_FILE
     rm -rf $WORK_DIR
