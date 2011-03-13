@@ -10,9 +10,6 @@ if [ -x /bin/tar ]; then
     tar -zxf $WORK_FILE --directory $WORK_DIR
     mv $WORK_DIR/serialx-dotfiles*/* $WORK_DIR
 
-    cp $WORK_DIR/bashrc ~/.bashrc_serialx
-    echo ". ~/.bashrc_serialx" >> ~/.bashrc
-
     read -p 'Install serialx git/hg config? [y/n] ' INSTALL_VCS
     if [ "$INSTALL_VCS" = "y" ]; then
         cp $WORK_DIR/gitconfig ~/.gitconfig
@@ -25,6 +22,10 @@ if [ -x /bin/tar ]; then
     if [ "$INSTALL_SSH_KEY" = "y" ]; then
         cp -r $WORK_DIR/ssh ~/.ssh
     fi
+
+    echo 'Installing .bashrc_serialx'
+    cp $WORK_DIR/bashrc ~/.bashrc_serialx
+    echo ". ~/.bashrc_serialx" >> ~/.bashrc
 
     echo 'Setting up woof.py'
     mkdir -p ~/bin
