@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo 'Settings up dotfiles...'
+echo 'Setting up dotfiles...'
 if [ -x /bin/tar ]; then
     WORK_DIR=/tmp/__dotfiles
     WORK_FILE=/tmp/__dotfiles.tar.gz
