@@ -29,7 +29,6 @@ if [ -x /bin/tar ]; then
     echo 'Installing .bashrc_serialx'
     cp $WORK_DIR/bashrc ~/.bashrc_serialx
     sed -i'.bak' '/^\. ~\/\.bashrc_serialx$/d' ~/.bashrc
-    echo "" >> ~/.bashrc
     echo ". ~/.bashrc_serialx" >> ~/.bashrc
 
     echo 'Setting up woof.py'
