@@ -102,3 +102,9 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# Add a notify alias to use notifo's notification script easily
+if [ -f ~/.notifo_api_key ]; then
+    echo ~/.notifo_api_key | read $NOTIFO_API_KEY
+    alias notify='notifo_cli.py -u serialx -s $NOTIFO_API_KEY -n foo'
+fi

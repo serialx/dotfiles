@@ -51,8 +51,10 @@ else
     echo 'Not debian?'
 fi
 
-read -p 'Do you have a notifo account? [y/n] ' INSTALL_NOTIFO
-if [ "$INSTALL_NOTIFO" = "y" ]; then
-    read -p 'Notifo API Key: ' NOTIFO_API_KEY
-    echo "alias notify='notifo_cli.py -u serialx -s $NOTIFO_API_KEY -n foo'" >> ~/.bashrc_serialx
+if [ ! -f ~/.notifo_api_key ]; then
+    read -p 'Do you have a notifo account? [y/n] ' INSTALL_NOTIFO
+    if [ "$INSTALL_NOTIFO" = "y" ]; then
+        read -p 'Notifo API Key: ' NOTIFO_API_KEY
+        echo "$NOTIFO_API_KEY" > ~/.notifo_api_key
+    fi
 fi
