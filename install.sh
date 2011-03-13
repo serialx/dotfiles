@@ -40,15 +40,18 @@ else
     exit
 fi
 
-echo 'Setting up python environment...'
-if [ -x /usr/bin/apt-get ]; then
-    sudo apt-get install python-setuptools
-    sudo easy_install pip
-    sudo pip install virtualenv
-    sudo pip install distribute
-    sudo pip install notifo  # for notifo notifications
-else
-    echo 'Not debian?'
+read -p 'Setup basic python environment? [y/n] ' INSTALL_PY_ENV
+if [ "$INSTALL_PY_ENV" = "y" ]; then
+    echo 'Setting up python environment...'
+    if [ -x /usr/bin/apt-get ]; then
+        sudo apt-get install python-setuptools
+        sudo easy_install pip
+        sudo pip install virtualenv
+        sudo pip install distribute
+        sudo pip install notifo  # for notifo notifications
+    else
+        echo 'Error: Not debian?'
+    fi
 fi
 
 if [ ! -f ~/.notifo_api_key ]; then
