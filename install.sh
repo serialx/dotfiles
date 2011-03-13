@@ -24,6 +24,7 @@ if [ -x /bin/tar ]; then
     echo 'Installing various conf files'
     cp $WORK_DIR/tmux.conf ~/.tmux.conf
     cp $WORK_DIR/vimrc ~/.vimrc
+    rm -r ~/.vim
     cp -r $WORK_DIR/vim ~/.vim
 
     echo 'Installing .bashrc_serialx'
