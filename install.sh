@@ -15,17 +15,21 @@ if [ -x /bin/tar ]; then
         cp $WORK_DIR/gitconfig ~/.gitconfig
         cp $WORK_DIR/hgrc ~/.hgrc
     fi
-    cp $WORK_DIR/tmux.conf ~/.tmux.conf
-    cp $WORK_DIR/vimrc ~/.vimrc
-    cp -r $WORK_DIR/vim ~/.vim
+
     read -p 'Install serialx ssh public key for login? [y/n] ' INSTALL_SSH_KEY
     if [ "$INSTALL_SSH_KEY" = "y" ]; then
         cp -r $WORK_DIR/ssh ~/.ssh
     fi
 
+    echo 'Installing various conf files'
+    cp $WORK_DIR/tmux.conf ~/.tmux.conf
+    cp $WORK_DIR/vimrc ~/.vimrc
+    cp -r $WORK_DIR/vim ~/.vim
+
     echo 'Installing .bashrc_serialx'
     cp $WORK_DIR/bashrc ~/.bashrc_serialx
-    sed -i 's/^\. ~\/\.bashrc_serialx$//' ~/.bashrc
+    sed -i'.bak' '/^\. ~\/\.bashrc_serialx$/d' ~/.bashrc
+    echo "" >> ~/.bashrc
     echo ". ~/.bashrc_serialx" >> ~/.bashrc
 
     echo 'Setting up woof.py'
