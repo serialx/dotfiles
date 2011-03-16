@@ -19,6 +19,8 @@ if [ -x /bin/tar ]; then
     read -p 'Install serialx ssh public key for login? [y/n] ' INSTALL_SSH_KEY
     if [ "$INSTALL_SSH_KEY" = "y" ]; then
         cp -r $WORK_DIR/ssh ~/.ssh
+        chmod 700 ~/.ssh
+        chmod 644 ~/.ssh/authorized_keys
     fi
 
     echo 'Installing various conf files'
