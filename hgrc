@@ -5,3 +5,4 @@ ssh = ssh -C
 [extensions]
 mq =
 rebase =
+record =
