@@ -40,7 +40,7 @@ endf
 if &term =~ "xterm" || &term =~ "screen-bce" || &term =~ "screen-256color"
 	"set t_Co=8
 	set t_Co=256
-	colorscheme desert256
+	"colorscheme desert256
 	colorscheme molokai
 	if has("terminfo")
 		let &t_Sf = "\<Esc>[3%p1%dm"
@@ -182,7 +182,7 @@ if has("gui_running")
 	set go+=c go-=t go-=m go-=T sel=inclusive
 	set lines=40 co=100 lsp=0
 	set mouse=a  " --TODO
-	colo desert
+	"colo desert
 	colo molokai
 	if has("transparency")
 		set transp=5
