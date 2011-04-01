@@ -39,9 +39,9 @@ endf
 " TERMINAL {{{ ---------------------------------------------
 if &term =~ "xterm" || &term =~ "screen-bce" || &term =~ "screen-256color"
 	"set t_Co=8
-    set t_Co=256
-    colorscheme desert256
-    colorscheme molokai
+	set t_Co=256
+	colorscheme desert256
+	colorscheme molokai
 	if has("terminfo")
 		let &t_Sf = "\<Esc>[3%p1%dm"
 		let &t_Sb = "\<Esc>[4%p1%dm"
@@ -183,7 +183,7 @@ if has("gui_running")
 	set lines=40 co=100 lsp=0
 	set mouse=a  " --TODO
 	colo desert
-    colo molokai
+	colo molokai
 	if has("transparency")
 		set transp=5
 	endif
@@ -300,8 +300,8 @@ if has("autocmd")
 	au Filetype text setl tw=80
 	au FileType javascript,jsp setl cin
 	au BufNewFile,BufRead *.phps,*.php3s setf php
-    au BufRead,BufNewFile *.thrift set filetype=thrift
-    au! Syntax thrift source ~/.vim/thrift.vim
+	au BufRead,BufNewFile *.thrift set filetype=thrift
+	au! Syntax thrift source ~/.vim/thrift.vim
 
 	" syntax extensions (see prior section for definition)
 	au Syntax html call s:SyntaxExtHTML()
