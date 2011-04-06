@@ -28,6 +28,7 @@ if [ -x /bin/tar ]; then
     cp $WORK_DIR/vimrc ~/.vimrc
     rm -r ~/.vim
     cp -r $WORK_DIR/vim ~/.vim
+    cp $WORK_DIR/pythonrc ~/.pythonrc
 
     echo 'Installing .bashrc_serialx'
     cp $WORK_DIR/bashrc ~/.bashrc_serialx
