@@ -2,7 +2,7 @@
 
 
 echo 'Setting up dotfiles...'
-if [ -x /bin/tar ]; then
+if [ -x /bin/tar -o -x /usr/bin/tar ]; then
     WORK_DIR=/tmp/__dotfiles
     WORK_FILE=/tmp/__dotfiles.tar.gz
     curl -L https://github.com/serialx/dotfiles/tarball/master > $WORK_FILE
