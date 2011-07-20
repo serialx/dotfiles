@@ -192,7 +192,7 @@ if has("gui_running")
 	if has("win32")
 		silent! set gfn=Consolas:h11 gfw=DotumChe:h10 lsp=0
 	elseif has("macunix")
-		silent! set macatsui gfn=Monaco:h12 gfw=AppleGothic\ Regular:h13
+		silent! set gfn=Monaco:h12 gfw=AppleGothic\ Regular:h13
 	endif
 
 	" toggle menubar
