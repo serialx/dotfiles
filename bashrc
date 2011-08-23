@@ -5,6 +5,16 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+    platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+    platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    platform='mac'
+fi
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -75,6 +85,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+fi
+
+if [[ $platform == 'mac' ]]; then
+    alias ls='ls -G'
+    alias grep='grep --color=auto'
+elif [[ $platform == 'freebsd' ]]; then
+    alias ls='ls -G'
+    alias grep='grep --color=auto'
 fi
 
 # some more ls aliases
