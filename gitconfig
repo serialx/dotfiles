@@ -1,9 +1,13 @@
 [user]
 	name = Brian Hong
-	email = serialx.net@gmail.com
+	email = serialx@cloudinsight.net
 
 [alias]
 	ci = commit
 	st = status
 	co = checkout
 	cia = commit -a
+	l = log --graph --all --color --oneline --decorate
+
+[core]
+	excludesfile = ~/.gitignore
