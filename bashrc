@@ -132,4 +132,5 @@ alias vi=vim
 
 # Add .pythonrc to environment to enable syntax completion
 export PYTHONSTARTUP=$HOME/.pythonrc
+export EDITOR=vim
 
