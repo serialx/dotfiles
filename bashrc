@@ -121,6 +121,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# set PATH so it includes /usr/local/bin if it exists
+if [ -d "/usr/local/bin" ] ; then
+    PATH="/usr/local/bin:$PATH"
+fi
+
 # Add a notify alias to use notifo's notification script easily
 if [ -f ~/.notifo_api_key ]; then
     read NOTIFO_API_KEY < ~/.notifo_api_key
@@ -134,3 +139,4 @@ alias vi=vim
 export PYTHONSTARTUP=$HOME/.pythonrc
 export EDITOR=vim
 
+source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
