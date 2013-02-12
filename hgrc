@@ -1,5 +1,5 @@
 [ui]
-username = Brian Hong <serialx@cloudinsight.net>
+username = Brian Hong <serialx@serialx.net>
 ssh = ssh -C
 
 [extensions]
