@@ -1,13 +1,16 @@
 [user]
 	name = Brian Hong
-	email = serialx@serialx.net
+	email = sungjinhong@devsisters.com
 
 [alias]
 	ci = commit
 	st = status
 	co = checkout
 	cia = commit -a
-	l = log --graph --all --color --oneline --decorate
+	#l = log --graph --all --color --oneline --decorate
+	l = log --graph --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
 
 [core]
 	excludesfile = ~/.gitignore
+[push]
+	default = simple
