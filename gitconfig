@@ -9,8 +9,11 @@
 	cia = commit -a
 	#l = log --graph --all --color --oneline --decorate
 	l = log --graph --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+	lb = log --graph --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 [core]
 	excludesfile = ~/.gitignore
 [push]
 	default = simple
+[color]
+	ui = auto

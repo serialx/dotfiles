@@ -125,6 +125,9 @@ fi
 if [ -d "/usr/local/bin" ] ; then
     PATH="/usr/local/bin:$PATH"
 fi
+if [ -d "/usr/local/sbin" ] ; then
+    PATH="/usr/local/sbin:$PATH"
+fi
 
 # Add a notify alias to use notifo's notification script easily
 if [ -f ~/.notifo_api_key ]; then
