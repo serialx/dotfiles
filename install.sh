@@ -86,6 +86,35 @@ if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
     vim +PluginInstall +qall
 fi
 
+# Golang related tools
+if [ ! -d $HOME/go ]; then
+    echo Installing golang 1.4.x...
+    GO_BRANCH=release-branch.go1.4
+    git clone git@github.com:golang/go.git $HOME/go
+    (cd $HOME/go && git checkout $GO_BRANCH)
+    (cd $HOME/go/src && GOOS=linux GOARCH=amd64 ./make.bash --no-clean)
+    (cd $HOME/go/src && GOOS=linux GOARCH=386 ./make.bash --no-clean)
+    (cd $HOME/go/src && GOOS=linux GOARCH=arm ./make.bash --no-clean)
+    (cd $HOME/go/src && GOOS=darwin GOARCH=amd64 ./make.bash --no-clean)
+    (cd $HOME/go/src && GOOS=windows GOARCH=amd64 ./make.bash --no-clean)
+fi
+
+GO=$HOME/go/bin/go
+echo Installing golang tools...
+function go_get_install {
+    $GO get $1
+    $GO install $1
+}
+go_get_install "github.com/nsf/gocode"
+go_get_install "golang.org/x/tools/cmd/goimports"
+go_get_install "github.com/rogpeppe/godef"
+go_get_install "golang.org/x/tools/cmd/oracle"
+go_get_install "golang.org/x/tools/cmd/gorename"
+go_get_install "golang.org/x/tools/cmd/gomvpkg"
+go_get_install "github.com/golang/lint/golint"
+go_get_install "github.com/kisielk/errcheck"
+go_get_install "github.com/jstemmer/gotags"
+
 
 ################################################################################
 ##################################  ALIAS  #####################################

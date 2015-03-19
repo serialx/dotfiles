@@ -21,6 +21,7 @@ export AWS_CREDENTIAL_FILE=~/.ec2/credentials
 export AWS_DEFAULT_REGION=ap-northeast-1
 
 # Golang
+export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/workspace/go
 export PATH="$PATH:${GOPATH}/bin/"
 
@@ -29,6 +30,9 @@ export NDK_ROOT=$HOME/workspace/android-ndk-r10c
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+# Chromium depot_tools
+export PATH=$PATH:$HOME/workspace/sandbox/depot_tools
 
 # AWS Auto Completion?
 autoload -U bashcompinit
