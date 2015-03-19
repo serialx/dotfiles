@@ -61,7 +61,7 @@ if [ "$(pip show awscli)" == "" ]; then
 fi
 
 # Install zsh
-if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
     # assume Bash, then we don't have zsh yet
     echo "Installing oh-my-zsh..."
     curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
