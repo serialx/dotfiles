@@ -84,6 +84,7 @@ if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
 
     echo Installing vim plugins...
     vim +PluginInstall +qall
+    reset  # Reset as vim can cause terminal to glitch
 fi
 
 # Golang related tools
