@@ -143,5 +143,3 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 export EDITOR=vim
 
 source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-
-source $HOME/.bashrc_serialx

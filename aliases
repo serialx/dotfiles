@@ -1,0 +1,47 @@
+#!/bin/bash
+
+#######################################################
+################ Environment Variables ################
+#######################################################
+
+# Mac Homebrew completion
+if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
+    # assume Bash
+    source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+fi
+
+# EDITOR configuration (for Git and etc.)
+export EDITOR=vim
+
+# Add .pythonrc to environment to enable syntax completion
+export PYTHONSTARTUP=$HOME/.pythonrc
+
+# Amazon Web Services
+export AWS_CREDENTIAL_FILE=~/.ec2/credentials
+export AWS_DEFAULT_REGION=ap-northeast-1
+
+# Golang
+export GOPATH=$HOME/workspace/go
+export PATH="$PATH:${GOPATH}/bin/"
+
+# Android
+export NDK_ROOT=$HOME/workspace/android-ndk-r10c
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+# AWS Auto Completion?
+autoload -U bashcompinit
+bashcompinit
+complete -C aws_completer aws
+
+
+#######################################################
+####################### Aliases #######################
+#######################################################
+
+# Add a vim alias
+alias vi=vim
+
+# Golang shortcuts
+alias cddev="cd $GOPATH/src/github.com/devsisters/"

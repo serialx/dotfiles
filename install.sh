@@ -1,70 +1,91 @@
-#!/bin/sh
+#!/bin/bash
 
-
-echo 'Setting up dotfiles...'
-if [ -x /bin/tar -o -x /usr/bin/tar ]; then
-    WORK_DIR=/tmp/__dotfiles
-    WORK_FILE=/tmp/__dotfiles.tar.gz
-    curl -L https://github.com/serialx/dotfiles/tarball/master > $WORK_FILE
-    mkdir -p $WORK_DIR
-    tar -zxf $WORK_FILE --directory $WORK_DIR
-    mv $WORK_DIR/serialx-dotfiles*/* $WORK_DIR
-
-    read -p 'Install serialx git/hg config? [y/n] ' INSTALL_VCS
-    if [ "$INSTALL_VCS" = "y" ]; then
-        cp $WORK_DIR/gitconfig ~/.gitconfig
-        cp $WORK_DIR/hgrc ~/.hgrc
-    fi
-
-    read -p 'Install serialx ssh public key for login? [y/n] ' INSTALL_SSH_KEY
-    if [ "$INSTALL_SSH_KEY" = "y" ]; then
-        cp -r $WORK_DIR/ssh ~/.ssh
-        chmod 700 ~/.ssh
-        chmod 644 ~/.ssh/authorized_keys
-    fi
-
-    echo 'Installing various conf files'
-    cp $WORK_DIR/tmux.conf ~/.tmux.conf
-    cp $WORK_DIR/vimrc ~/.vimrc
-    rm -r ~/.vim
-    cp -r $WORK_DIR/vim ~/.vim
-    cp $WORK_DIR/pythonrc ~/.pythonrc
-
-    echo 'Installing .bashrc_serialx'
-    cp $WORK_DIR/bashrc ~/.bashrc_serialx
-    sed -i'.bak' '/^\. ~\/\.bashrc_serialx$/d' ~/.bashrc
-    echo ". ~/.bashrc_serialx" >> ~/.bashrc
-
-    echo 'Setting up woof.py'
-    mkdir -p ~/bin
-    cp $WORK_DIR/bin/woof ~/bin
-    chmod +x ~/bin/woof
-
-    rm $WORK_FILE
-    rm -rf $WORK_DIR
-else
-    echo 'Please install tar/gz to continue.'
-    exit
+FORCE=0  # Force replace dotfiles when "1"
+if [ "$1" == "-f" ]; then
+    FORCE=1
 fi
 
-read -p 'Setup basic python environment? [y/n] ' INSTALL_PY_ENV
-if [ "$INSTALL_PY_ENV" = "y" ]; then
-    echo 'Setting up python environment...'
-    if [ -x /usr/bin/apt-get ]; then
-        sudo apt-get install python-setuptools
-        sudo easy_install pip
-        sudo pip install virtualenv
-        sudo pip install distribute
-        sudo pip install notifo  # for notifo notifications
+DOTFILES=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+echo Dotfiles script dir: $DOTFILES
+
+function install_dotfile {
+    SOURCE=$DOTFILES/$1
+    TARGET=$HOME/.$1
+    if [ -f "$TARGET" -o -L "$TARGET" ]; then
+        if [ "$FORCE" == "1" ]; then
+            # Force replace dotfiles
+            mv $TARGET ${TARGET}.bak
+            ln -s $SOURCE $TARGET
+            echo Replacing $TARGET: backing up to ${TARGET}.bak
+        else
+            echo Skipping $TARGET: already exists
+        fi
     else
-        echo 'Error: Not debian?'
+        ln -s $SOURCE $TARGET
+        echo Installed to $TARGET: $SOURCE
     fi
+}
+
+install_dotfile gitconfig
+install_dotfile hgrc
+install_dotfile aliases
+install_dotfile pythonrc
+install_dotfile vimrc
+install_dotfile zshrc
+
+# Install newest version of vim if it does not already exist
+if [ "$OSTYPE" == "linux-gnu" ]; then
+    echo "Installing newest version of vim using apt-get..."
+    sudo apt-get update
+    sudo apt-get install vim
+elif [ "$OSTYPE" == "darwin"* ]; then
+    echo "Installing newest version of vim using homebrew..."
+    brew update
+    brew install vim
 fi
 
-if [ ! -f ~/.notifo_api_key ]; then
-    read -p 'Do you have a notifo account? [y/n] ' INSTALL_NOTIFO
-    if [ "$INSTALL_NOTIFO" = "y" ]; then
-        read -p 'Notifo API Key: ' NOTIFO_API_KEY
-        echo "$NOTIFO_API_KEY" > ~/.notifo_api_key
-    fi
+# Install vim bundle
+if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
+    mkdir -p $HOME/.vim/bundle/Vundle.vim
+    echo Installing vim Bundle...
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+    echo Installing vim plugins...
+    vim +PluginInstall +qall
 fi
+
+# Install tools
+if [ "$(pip show awscli)" == "" ]; then
+    echo "Installing awscli..."
+    pip install -q -U awscli
+fi
+
+# Install zsh
+if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
+    # assume Bash, then we don't have zsh yet
+    echo "Installing oh-my-zsh..."
+    curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+fi
+
+# Link up bashrc/zshrc to aliases
+ALIAS_SRC="source $HOME/.aliases"
+
+function install_alias {
+    TARGET=$1
+    if grep -q "$ALIAS_SRC" "$TARGET"; then
+        echo "Skipping $TARGET: alias sourcing already exists"
+    else 
+        echo "Inserting alias sourcing to $TARGET"
+        echo "# AUTOMATIC INSERTED BY github.com/serialx/dotfiles install.sh script" >> $TARGET
+        echo "$ALIAS_SRC" >> $TARGET
+        echo "# AUTOMARIC INSERT END" >> $TARGET
+    fi
+}
+
+# We don't need to install aliases in zsh because it's already there
+if [ "$OSTYPE" == "linux-gnu" ]; then
+    install_alias $HOME/.bashrc
+elif [ "$OSTYPE" == "darwin"* ]; then
+    install_alias $HOME/.bash_profile
+fi
+
