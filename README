@@ -1,4 +1,0 @@
-serialx's used dotfiles.
-
-To install use:
-    curl https://raw.github.com/serialx/dotfiles/master/install.sh > /tmp/dotfiles_installer.sh; bash /tmp/dotfiles_installer.sh; rm /tmp/dotfiles_installer.sh
