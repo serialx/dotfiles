@@ -3,7 +3,8 @@
 	email = sungjinhong@devsisters.com
 
 [alias]
-	ci = commit
+	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	ci = commit -v
 	st = status
 	co = checkout
 	cia = commit -a
