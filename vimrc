@@ -46,6 +46,7 @@ Bundle 'Lokaltog/vim-distinguished'
 " Golang
 Bundle 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
+map <F6> :GoRename<CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
