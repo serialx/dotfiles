@@ -42,11 +42,30 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/wombat256.vim'
 Bundle 'Zenburn'
 Bundle 'Lokaltog/vim-distinguished'
+Bundle 'fatih/molokai'
 
 " Golang
 Bundle 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
-map <F6> :GoRename<CR>
+au FileType go nmap <F6> <Plug>(go-rename)
+
+"au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+"au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
+"au FileType go nmap <Leader>i <Plug>(go-info)
+"au FileType go nmap <Leader>s <Plug>(go-implements)
+
+let g:go_auto_type_info = 1
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -91,7 +110,9 @@ if &term =~ "xterm" || &term =~ "screen-bce" || &term =~ "screen-256color"
 	"colorscheme molokai
 	"colorscheme zenburn
 	"colorscheme wombat256mod
-	colo distinguished
+	"colo distinguished
+	colorscheme molokai
+	let g:rehash256 = 1
 	if has("terminfo")
 		let &t_Sf = "\<Esc>[3%p1%dm"
 		let &t_Sb = "\<Esc>[4%p1%dm"
