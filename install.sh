@@ -112,9 +112,11 @@ go_get_install "github.com/rogpeppe/godef"
 go_get_install "golang.org/x/tools/cmd/oracle"
 go_get_install "golang.org/x/tools/cmd/gorename"
 go_get_install "golang.org/x/tools/cmd/gomvpkg"
+go_get_install "golang.org/x/tools/cmd/cover"
 go_get_install "github.com/golang/lint/golint"
 go_get_install "github.com/kisielk/errcheck"
 go_get_install "github.com/jstemmer/gotags"
+go_get_install "github.com/tools/godep"
 
 
 ################################################################################
