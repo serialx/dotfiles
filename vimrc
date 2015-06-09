@@ -36,6 +36,7 @@ Bundle 'mileszs/ack.vim'
 "Bundle 'web-indent'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'scrooloose/syntastic'
+Bundle 'cstrahan/vim-capnp'
 
 "Themes
 Bundle 'altercation/vim-colors-solarized'
@@ -49,7 +50,7 @@ Bundle 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 au FileType go nmap <F6> <Plug>(go-rename)
 
-"au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
@@ -238,7 +239,7 @@ endf
 imap <silent> <C-'> <C-R>=<SID>InputQuotes()<CR>
 
 " misc. mapping
-nmap <silent> <Leader>cd :cd %:p:h<CR>
+nmap <silent> <Leader>cd :e %:p:h<CR>
 nmap <silent> <Leader><Space> :noh<CR>
 " }}} ------------------------------------------------------
 
