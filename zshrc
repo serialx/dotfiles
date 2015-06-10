@@ -86,6 +86,4 @@ HISTSIZE=5000 # session history size
 SAVEHIST=1000 # saved history
 #HISTFILE=~/.zshistory # history file
 
-# AUTOMATIC INSERTED BY github.com/serialx/dotfiles install.sh script
-source /Users/serialx/.aliases
-# AUTOMARIC INSERT END
+source $HOME/.aliases
