@@ -88,19 +88,12 @@ if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
 fi
 
 # Golang related tools
-if [ ! -d $HOME/go ]; then
-    echo Installing golang 1.4.x...
-    GO_BRANCH=release-branch.go1.4
-    git clone git@github.com:golang/go.git $HOME/go
-    (cd $HOME/go && git checkout $GO_BRANCH)
-    (cd $HOME/go/src && GOOS=linux GOARCH=amd64 ./make.bash --no-clean)
-    (cd $HOME/go/src && GOOS=linux GOARCH=386 ./make.bash --no-clean)
-    (cd $HOME/go/src && GOOS=linux GOARCH=arm ./make.bash --no-clean)
-    (cd $HOME/go/src && GOOS=darwin GOARCH=amd64 ./make.bash --no-clean)
-    (cd $HOME/go/src && GOOS=windows GOARCH=amd64 ./make.bash --no-clean)
+elif [ "$OSTYPE" == "darwin"* ]; then
+    echo "Installing newest version of go using homebrew..."
+    brew install go
 fi
 
-GO=$HOME/go/bin/go
+GO=go
 echo Installing golang tools...
 function go_get_install {
     $GO get $1

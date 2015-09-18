@@ -21,7 +21,6 @@ export AWS_CREDENTIAL_FILE=~/.ec2/credentials
 export AWS_DEFAULT_REGION=ap-northeast-1
 
 # Golang
-export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/workspace/go
 export PATH="$PATH:${GOPATH}/bin/"
 
