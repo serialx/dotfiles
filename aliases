@@ -52,7 +52,15 @@ alias vi=vim
 # Golang shortcuts
 alias cddev="cd $GOPATH/src/github.com/devsisters/"
 
+# Eclair
+alias gecl="AWS_PROFILE=global ECLRC=$HOME/.eclrc.global ecl"
+
 #export DOCKER_HOST=tcp://192.168.59.103:2376
 #export DOCKER_CERT_PATH=/Users/serialx/.boot2docker/certs/boot2docker-vm
 #export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.99.100:2376 DOCKER_CERT_PATH=/Users/serialx/.docker/machine/machines/dev DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.99.100:2376 DOCKER_CERT_PATH=/Users/serialx/.docker/machine/machines/default DOCKER_TLS_VERIFY=1
+
+notify () {
+    osascript -e "display notification \"$*\" sound name \"Glass\" with title \"Shell Notification\""
+    say "$*"
+}
