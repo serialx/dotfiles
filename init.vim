@@ -20,9 +20,9 @@ set lcs+=tab:»\ ,trail:·
 
 " key mapping neovim + mac workaround
 " https://github.com/neovim/neovim/issues/2048
-"if has('nvim')
-"  nmap <BS> <c-h>
-"endif
+if has('nvim')
+  nmap <BS> <c-h>
+endif
 
 " key mapping
 let mapleader = '\'
