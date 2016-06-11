@@ -15,15 +15,15 @@ echo Dotfiles script dir: $DOTFILES
 ################################################################################
 
 # Install Python 2 from homebrew. We need to do this before nvim
-if [ "$OSTYPE" == "linux-gnu" ]; then
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get install python-dev python-pip
-elif [ "$OSTYPE" == "darwin"* ]; then
+elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install python
     pip install --upgrade pip setuptools
 fi
 
 # Install zsh
-if [ "$OSTYPE" == "darwin"* ]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     if [ ! -d $HOME/.oh-my-zsh ]; then
         # assume Bash, then we don't have zsh yet
         echo "Installing oh-my-zsh..."
@@ -78,12 +78,12 @@ if [ "$(pip show awscli)" == "" ]; then
 fi
 
 # Install neovim
-if [ "$OSTYPE" == "linux-gnu" ]; then
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get install software-properties-common
     sudo add-apt-repository ppa:neovim-ppa/unstable
     sudo apt-get update
     sudo apt-get install neovim
-elif [ "$OSTYPE" == "darwin"* ]; then
+elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install --HEAD neovim/neovim/neovim
 fi
 
@@ -124,9 +124,9 @@ function install_alias {
 }
 
 # We don't need to install aliases in zsh because it's already there
-if [ "$OSTYPE" == "linux-gnu" ]; then
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
     install_alias $HOME/.bashrc
-elif [ "$OSTYPE" == "darwin"* ]; then
+elif [[ "$OSTYPE" == "darwin"* ]]; then
     install_alias $HOME/.bash_profile
 fi
 
