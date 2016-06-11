@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes /usr/local/bin if it exists
+if [ -d "/usr/local/bin" ] ; then
+    PATH="/usr/local/bin:$PATH"
+fi
+if [ -d "/usr/local/sbin" ] ; then
+    PATH="/usr/local/sbin:$PATH"
+fi
+
+# Mac Homebrew completion
+if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
+    # assume Bash
+    if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
+        source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+    fi
+fi
+
+# EDITOR configuration (for Git and etc.)
+export EDITOR=nvim
+
+# Add .pythonrc to environment to enable syntax completion
+export PYTHONSTARTUP=$HOME/.pythonrc
+
+# Amazon Web Services
+#export AWS_CREDENTIAL_FILE=~/.ec2/credentials
+export AWS_DEFAULT_REGION=ap-northeast-1
+
+# Golang
+export GOPATH=$HOME/workspace/go
+export PATH="$PATH:${GOPATH}/bin/"
+
+# Android
+export NDK_ROOT=$HOME/workspace/android-ndk-r10c
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+# Chromium depot_tools
+export PATH=$PATH:$HOME/workspace/sandbox/depot_tools
+
+# Scala
+export PATH=$PATH:$HOME/workspace/sandbox/scala-2.10.5/bin
+
+# add cuda libraries to library path
+if [[ "${LD_LIBRARY_PATH}" != "" ]]; then
+  export LD_LIBRARY_PATH=/usr/local/cuda/lib:${LD_LIBRARY_PATH}
+else
+  export LD_LIBRARY_PATH=/usr/local/cuda/lib
+fi
+
+# AWS Auto Completion?
+autoload -U bashcompinit
+bashcompinit
+complete -C aws_completer aws
+
+# chruby
+if [ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
+    source /usr/local/opt/chruby/share/chruby/chruby.sh
+    chruby 2.2.3
+fi
+
+# For python
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# NVM
+export NVM_DIR="/Users/serialx/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# z
+if [ -f `brew --prefix`/etc/profile.d/z.sh ]; then
+    . `brew --prefix`/etc/profile.d/z.sh
+fi

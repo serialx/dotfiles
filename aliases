@@ -1,67 +1,5 @@
 #!/bin/bash
 
-#######################################################
-################ Environment Variables ################
-#######################################################
-
-# Mac Homebrew completion
-if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
-    # assume Bash
-    if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
-        source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-    fi
-fi
-
-# EDITOR configuration (for Git and etc.)
-export EDITOR=nvim
-
-# Add .pythonrc to environment to enable syntax completion
-export PYTHONSTARTUP=$HOME/.pythonrc
-
-# Amazon Web Services
-export AWS_CREDENTIAL_FILE=~/.ec2/credentials
-export AWS_DEFAULT_REGION=ap-northeast-1
-
-# Golang
-export GOPATH=$HOME/workspace/go
-export PATH="$PATH:${GOPATH}/bin/"
-
-# Android
-export NDK_ROOT=$HOME/workspace/android-ndk-r10c
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
-
-# Chromium depot_tools
-export PATH=$PATH:$HOME/workspace/sandbox/depot_tools
-
-# Scala
-export PATH=$PATH:$HOME/workspace/sandbox/scala-2.10.5/bin
-
-# AWS Auto Completion?
-autoload -U bashcompinit
-bashcompinit
-complete -C aws_completer aws
-
-# chruby
-if [ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
-    source /usr/local/opt/chruby/share/chruby/chruby.sh
-    chruby 2.2.3
-fi
-
-# For python
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-# NVM
-export NVM_DIR="/Users/serialx/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# z
-if [ -f `brew --prefix`/etc/profile.d/z.sh ]; then
-    . `brew --prefix`/etc/profile.d/z.sh
-fi
-
 
 #######################################################
 ####################### Aliases #######################
@@ -71,18 +9,12 @@ fi
 alias vi=nvim
 alias vim=nvim
 
-# Golang shortcuts
-alias cddev="cd $GOPATH/src/github.com/devsisters/"
-
 # Eclair
 alias gecl="AWS_PROFILE=global ECLRC=$HOME/.eclrc.global ecl"
-
-#export DOCKER_HOST=tcp://192.168.59.103:2376
-#export DOCKER_CERT_PATH=/Users/serialx/.boot2docker/certs/boot2docker-vm
-#export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.99.100:2376 DOCKER_CERT_PATH=/Users/serialx/.docker/machine/machines/default DOCKER_TLS_VERIFY=1
 
 notify () {
     osascript -e "display notification \"$*\" sound name \"Glass\" with title \"Shell Notification\""
     say "$*"
 }
+
+source $HOME/.env

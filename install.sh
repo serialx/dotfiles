@@ -63,6 +63,7 @@ install_dotfile zshrc force
 install_dotfile gitconfig
 install_dotfile hgrc
 install_dotfile aliases
+install_dotfile env
 install_dotfile pythonrc
 install_dotfile vimrc
 
@@ -112,7 +113,7 @@ fi
 ################################################################################
 
 # Link up bashrc/zshrc to aliases
-ALIAS_SRC="source $HOME/.aliases"
+ALIAS_SRC=$"source $HOME/.aliases"
 
 function install_alias {
     TARGET=$1

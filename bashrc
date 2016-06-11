@@ -116,30 +116,4 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes /usr/local/bin if it exists
-if [ -d "/usr/local/bin" ] ; then
-    PATH="/usr/local/bin:$PATH"
-fi
-if [ -d "/usr/local/sbin" ] ; then
-    PATH="/usr/local/sbin:$PATH"
-fi
-
-# Add a notify alias to use notifo's notification script easily
-if [ -f ~/.notifo_api_key ]; then
-    read NOTIFO_API_KEY < ~/.notifo_api_key
-    alias notify="notifo_cli.py -u serialx -s $NOTIFO_API_KEY -n foo"
-fi
-
-# Add a vim alias
-alias vi=vim
-
-# Add .pythonrc to environment to enable syntax completion
-export PYTHONSTARTUP=$HOME/.pythonrc
-export EDITOR=vim
-
-source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+source $HOME/.aliases
