@@ -1,23 +1,25 @@
 #!/bin/bash
 
+set -e
+
 FORCE=0  # Force replace dotfiles when "1"
 if [ "$1" == "-f" ]; then
     FORCE=1
 fi
 
+DOTFILES=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+echo Dotfiles script dir: $DOTFILES
+
 ################################################################################
 ##############################  PREREQUISITES  #################################
 ################################################################################
 
-# Install newest version of vim if it does not already exist
+# Install Python 2 from homebrew. We need to do this before nvim
 if [ "$OSTYPE" == "linux-gnu" ]; then
-    echo "Installing newest version of vim using apt-get..."
-    sudo apt-get update
-    sudo apt-get install vim
+    sudo apt-get install python-dev python-pip
 elif [ "$OSTYPE" == "darwin"* ]; then
-    echo "Installing newest version of vim using homebrew..."
-    brew update
-    brew install vim --override-system-vi
+    brew install python
+    pip install --upgrade pip setuptools
 fi
 
 # Install zsh
@@ -33,9 +35,6 @@ fi
 ################################################################################
 ################################  DOTFILES  ####################################
 ################################################################################
-
-DOTFILES=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-echo Dotfiles script dir: $DOTFILES
 
 function install_dotfile {
     SOURCE=$DOTFILES/$1
@@ -78,17 +77,32 @@ if [ "$(pip show awscli)" == "" ]; then
     pip install -q -U awscli
 fi
 
-# Install vim bundle
-if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
-    mkdir -p $HOME/.vim/bundle/Vundle.vim
-    echo Installing vim Bundle...
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-    echo Installing vim plugins...
-    vim +PluginInstall +qall
-    reset  # Reset as vim can cause terminal to glitch
+# Install neovim
+if [ "$OSTYPE" == "linux-gnu" ]; then
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt-get update
+    sudo apt-get install neovim
+elif [ "$OSTYPE" == "darwin"* ]; then
+    brew install --HEAD neovim/neovim/neovim
 fi
 
+mkdir -p $HOME/.config/nvim/autoload
+ln -fs $DOTFILES/init.vim $HOME/.config/nvim/init.vim
+
+# Install neovim python support
+pip2 install -U neovim
+
+# Install plug for neovim
+if [ ! -f $HOME/.config/nvim/autoload/plug.vim ]; then
+    echo Installing vim plug...
+    curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    echo Installing vim plugins...
+    nvim +PlugInstall
+    reset  # Reset as vim can cause terminal to glitch
+fi
 
 ################################################################################
 ##################################  ALIAS  #####################################

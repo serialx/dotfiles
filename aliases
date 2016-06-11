@@ -13,7 +13,7 @@ if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
 fi
 
 # EDITOR configuration (for Git and etc.)
-export EDITOR=vim
+export EDITOR=nvim
 
 # Add .pythonrc to environment to enable syntax completion
 export PYTHONSTARTUP=$HOME/.pythonrc
@@ -68,7 +68,8 @@ fi
 #######################################################
 
 # Add a vim alias
-alias vi=vim
+alias vi=nvim
+alias vim=nvim
 
 # Golang shortcuts
 alias cddev="cd $GOPATH/src/github.com/devsisters/"
