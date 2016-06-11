@@ -102,6 +102,9 @@ if [ ! -f $HOME/.config/nvim/autoload/plug.vim ]; then
     echo Installing vim plugins...
     nvim +PlugInstall +qa
     reset  # Reset as vim can cause terminal to glitch
+
+    # Install YouCompleteMe
+    (cd $HOME/.config/nvim/plugged/YouCompleteMe; ./install.py)
 fi
 
 ################################################################################
