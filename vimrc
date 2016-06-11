@@ -368,7 +368,7 @@ if has("autocmd")
 	au FileType xhtml setl ts=8 sw=2 sts=2 et
 	au FileType htmldjango setl ts=8 sw=2 sts=2 et
 	au FileType erlang setl ts=8 sw=4 sts=4 et
-	au FileType javascript setl ts=8 sw=4 sts=4 et
+	au FileType javascript setl ts=8 sw=2 sts=2 et
 	au FileType jade setl ts=8 sw=4 sts=4 et
 	au FileType asp setl ts=8 sw=4 sts=4 et
 	au FileType php setl ts=8 sw=4 sts=4 et
