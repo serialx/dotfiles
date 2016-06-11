@@ -50,5 +50,7 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 
+brew install z
+
 # Remove outdated versions from the cellar.
 brew cleanup
