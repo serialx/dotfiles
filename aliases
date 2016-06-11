@@ -7,7 +7,9 @@
 # Mac Homebrew completion
 if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
     # assume Bash
-    source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+    if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
+        source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+    fi
 fi
 
 # EDITOR configuration (for Git and etc.)

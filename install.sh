@@ -17,14 +17,16 @@ if [ "$OSTYPE" == "linux-gnu" ]; then
 elif [ "$OSTYPE" == "darwin"* ]; then
     echo "Installing newest version of vim using homebrew..."
     brew update
-    brew install vim
+    brew install vim --override-system-vi
 fi
 
 # Install zsh
-if [ ! -d $HOME/.oh-my-zsh ]; then
-    # assume Bash, then we don't have zsh yet
-    echo "Installing oh-my-zsh..."
-    curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+if [ "$OSTYPE" == "darwin"* ]; then
+    if [ ! -d $HOME/.oh-my-zsh ]; then
+        # assume Bash, then we don't have zsh yet
+        echo "Installing oh-my-zsh..."
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    fi
 fi
 
 
@@ -86,30 +88,6 @@ if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
     vim +PluginInstall +qall
     reset  # Reset as vim can cause terminal to glitch
 fi
-
-# Golang related tools
-elif [ "$OSTYPE" == "darwin"* ]; then
-    echo "Installing newest version of go using homebrew..."
-    brew install go
-fi
-
-GO=go
-echo Installing golang tools...
-function go_get_install {
-    $GO get $1
-    $GO install $1
-}
-go_get_install "github.com/nsf/gocode"
-go_get_install "golang.org/x/tools/cmd/goimports"
-go_get_install "github.com/rogpeppe/godef"
-go_get_install "golang.org/x/tools/cmd/oracle"
-go_get_install "golang.org/x/tools/cmd/gorename"
-go_get_install "golang.org/x/tools/cmd/gomvpkg"
-go_get_install "golang.org/x/tools/cmd/cover"
-go_get_install "github.com/golang/lint/golint"
-go_get_install "github.com/kisielk/errcheck"
-go_get_install "github.com/jstemmer/gotags"
-go_get_install "github.com/tools/godep"
 
 
 ################################################################################
