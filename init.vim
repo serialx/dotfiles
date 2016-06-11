@@ -1,9 +1,6 @@
 
 call plug#begin()
-Plug 'tpope/vim-sensible'
 Plug 'kien/ctrlp.vim'
-" replaced with vim-airline
-"Plug 'fholgado/minibufexpl.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
@@ -20,14 +17,9 @@ set lcs+=tab:»\ ,trail:·
 
 " key mapping neovim + mac workaround
 " https://github.com/neovim/neovim/issues/2048
-if has('nvim')
-  nmap <BS> <c-h>
-endif
-
-" ESC key input bug workaround
-" https://github.com/neovim/neovim/issues/2017#issuecomment-163337531
-set ttimeout
-set ttimeoutlen=0
+"if has('nvim')
+"  nmap <BS> <c-h>
+"endif
 
 " key mapping
 let mapleader = '\'
