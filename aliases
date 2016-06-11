@@ -44,8 +44,10 @@ bashcompinit
 complete -C aws_completer aws
 
 # chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby 2.2.3
+if [ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
+    source /usr/local/opt/chruby/share/chruby/chruby.sh
+    chruby 2.2.3
+fi
 
 # For python
 export LC_ALL=en_US.UTF-8
@@ -56,7 +58,9 @@ export NVM_DIR="/Users/serialx/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # z
-. `brew --prefix`/etc/profile.d/z.sh
+if [ -f `brew --prefix`/etc/profile.d/z.sh ]; then
+    . `brew --prefix`/etc/profile.d/z.sh
+fi
 
 
 #######################################################
