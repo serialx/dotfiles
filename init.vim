@@ -9,7 +9,10 @@ Plug 'fatih/vim-go'
 call plug#end()
 
 " color scheme
-colorscheme molokai
+try
+  colorscheme molokai
+catch /^Vim\%((\a\+)\)\=:E185/
+endtry
 
 " list mode
 set list lcs=extends:>,precedes:<

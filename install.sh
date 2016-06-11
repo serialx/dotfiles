@@ -100,7 +100,7 @@ if [ ! -f $HOME/.config/nvim/autoload/plug.vim ]; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     echo Installing vim plugins...
-    nvim +PlugInstall
+    nvim +PlugInstall +qa
     reset  # Reset as vim can cause terminal to glitch
 fi
 
