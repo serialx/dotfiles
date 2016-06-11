@@ -14,6 +14,9 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 
+" enable buffer change without saving
+set hidden
+
 " list mode
 set list lcs=extends:>,precedes:<
 set lcs+=tab:»\ ,trail:·
@@ -26,6 +29,7 @@ endif
 
 " key mapping
 let mapleader = '\'
+map <c-w> :bw<CR>
 map <c-l> :bn<CR>
 map <c-h> :bN<CR>
 map - :Explore<cr>
