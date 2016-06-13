@@ -6,6 +6,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/molokai'
 Plug 'fatih/vim-go'
+Plug 'dietsche/vim-lastplace'
 call plug#end()
 
 " color scheme
@@ -16,6 +17,10 @@ endtry
 
 " enable buffer change without saving
 set hidden
+
+" smartcase search
+set ignorecase
+set smartcase
 
 " list mode
 set list lcs=extends:>,precedes:<
@@ -29,7 +34,7 @@ endif
 
 " key mapping
 let mapleader = '\'
-map <c-w> :bw<CR>
+map <s-w> :bw<CR>
 map <c-l> :bn<CR>
 map <c-h> :bN<CR>
 map - :Explore<cr>
