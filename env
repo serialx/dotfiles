@@ -31,6 +31,9 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 #export AWS_CREDENTIAL_FILE=~/.ec2/credentials
 export AWS_DEFAULT_REGION=ap-northeast-1
 
+# TexLive
+export PATH="$PATH:/usr/local/texlive/2016/bin/x86_64-darwin/"
+
 # Golang
 export GOPATH=$HOME/workspace/go
 export PATH="$PATH:${GOPATH}/bin/"
