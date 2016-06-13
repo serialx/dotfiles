@@ -32,7 +32,6 @@ brew install homebrew/dupes/screen
 
 brew install bfg
 brew install binutils
-brew install binwalk
 brew install nmap
 brew install xz
 
