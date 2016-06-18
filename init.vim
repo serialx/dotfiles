@@ -9,11 +9,19 @@ Plug 'fatih/vim-go'
 Plug 'dietsche/vim-lastplace'
 call plug#end()
 
+" Color column right after tw
+set colorcolumn=+1
+
 " color scheme
 try
   colorscheme molokai
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
+
+" clipboard integration
+if has('mac')
+  set clipboard=unnamed
+endif
 
 " enable buffer change without saving
 set hidden
@@ -71,3 +79,4 @@ au FileType python setl ts=8 sw=4 sts=4 et
 au FileType ruby setl ts=8 sw=2 sts=2 et
 au FileType go setl lcs=tab:\ \ ,trail:· ts=4 sw=4 noet
 au FileType sh setl ts=8 sw=4 sts=4 et
+au FileType tex setl ts=8 sw=2 sts=2 et tw=78
