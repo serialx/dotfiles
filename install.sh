@@ -18,7 +18,7 @@ echo Dotfiles script dir: $DOTFILES
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get install python-dev python-pip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install python
+    brew install python || true
     pip install --upgrade pip setuptools
 fi
 
