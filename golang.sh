@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Golang related tools
-if [ "$OSTYPE" == "darwin"* ]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Installing newest version of go using homebrew..."
     brew install go
 fi
