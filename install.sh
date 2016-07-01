@@ -92,7 +92,7 @@ mkdir -p $HOME/.config/nvim/autoload
 ln -fs $DOTFILES/init.vim $HOME/.config/nvim/init.vim
 
 # Install neovim python support
-pip2 install -U neovim
+pip install -U neovim
 
 # Install plug for neovim
 if [ ! -f $HOME/.config/nvim/autoload/plug.vim ]; then
