@@ -4,7 +4,6 @@
 
 [alias]
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
-	ci = commit -v
 	st = status
 	co = checkout
 	cia = commit -a
@@ -19,3 +18,5 @@
 	default = simple
 [color]
 	ui = auto
+[commit]
+	verbose = true
