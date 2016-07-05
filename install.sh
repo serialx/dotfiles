@@ -66,6 +66,7 @@ install_dotfile aliases
 install_dotfile env
 install_dotfile pythonrc
 install_dotfile vimrc
+install_dotfile tmux.conf
 
 
 ################################################################################

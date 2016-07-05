@@ -56,18 +56,20 @@ export PATH=$PATH:$HOME/workspace/sandbox/depot_tools
 export PATH=$PATH:$HOME/workspace/sandbox/scala-2.10.5/bin
 
 # add cuda libraries to library path
-if [[ "${LD_LIBRARY_PATH}" != "" ]]; then
-  export LD_LIBRARY_PATH=/usr/local/cuda/lib:${LD_LIBRARY_PATH}
+export CUDA_HOME=/usr/local/cuda
+if [[ "$DYLD_LIBRARY_PATH" != "" ]]; then
+  export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
 else
-  export LD_LIBRARY_PATH=/usr/local/cuda/lib
+  export DYLD_LIBRARY_PATH="$CUDA_HOME/lib"
 fi
+export PATH="$PATH:$CUDA_HOME/bin"
 
-# AWS Auto Completion?
+# AWS Auto Completion
 autoload -U bashcompinit
 bashcompinit
 complete -C aws_completer aws
 
-# For python
+# For Python (Because Mac environment variables are out of spec)
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
