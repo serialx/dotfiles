@@ -27,6 +27,11 @@ export EDITOR=nvim
 # Add .pythonrc to environment to enable syntax completion
 export PYTHONSTARTUP=$HOME/.pythonrc
 
+# Python virtualenvwrapper
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
 # Amazon Web Services
 #export AWS_CREDENTIAL_FILE=~/.ec2/credentials
 export AWS_DEFAULT_REGION=ap-northeast-1
@@ -68,8 +73,10 @@ export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # NVM
-export NVM_DIR="/Users/serialx/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+if [ -d "$HOME/.nvm" ] ; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
 
 # z
 if [ -f `brew --prefix`/etc/profile.d/z.sh ]; then
