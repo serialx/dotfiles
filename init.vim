@@ -74,6 +74,9 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 
+" ctlrp
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|node_modules|venv$'
+
 " autocmd
 au FileType python setl ts=8 sw=4 sts=4 et
 au FileType ruby setl ts=8 sw=2 sts=2 et
