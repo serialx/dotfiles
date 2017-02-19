@@ -76,7 +76,11 @@ install_dotfile tmux.conf
 # Install tools
 if [ "$(pip show awscli)" == "" ]; then
     echo "Installing awscli..."
-    pip install -q -U awscli
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        sudo pip install -q -U awscli
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        pip install -q -U awscli
+    fi
 fi
 
 # Install neovim
@@ -93,7 +97,11 @@ mkdir -p $HOME/.config/nvim/autoload
 ln -fs $DOTFILES/init.vim $HOME/.config/nvim/init.vim
 
 # Install neovim python support
-pip install -U neovim
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    sudo pip install -q -U neovim
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    pip install -q -U neovim
+fi
 
 # Install plug for neovim
 if [ ! -f $HOME/.config/nvim/autoload/plug.vim ]; then

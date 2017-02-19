@@ -14,10 +14,13 @@ if [ -d "/usr/local/sbin" ] ; then
 fi
 
 # Mac Homebrew completion
+exists() { [ ! -z `which "$1"` ]; }
 if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
     # assume Bash
-    if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
-        source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+    if exists brew; then
+        if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
+            source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+        fi
     fi
 fi
 
@@ -65,9 +68,11 @@ fi
 export PATH="$PATH:$CUDA_HOME/bin"
 
 # AWS Auto Completion
-autoload -U bashcompinit
-bashcompinit
-complete -C aws_completer aws
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    autoload -U bashcompinit
+    bashcompinit
+    complete -C aws_completer aws
+fi
 
 # For Python (Because Mac environment variables are out of spec)
 export LC_ALL=en_US.UTF-8
@@ -81,8 +86,10 @@ if [ -d "$HOME/.nvm" ] ; then
 fi
 
 # z
-if [ -f `brew --prefix`/etc/profile.d/z.sh ]; then
-    . `brew --prefix`/etc/profile.d/z.sh
+if exists brew; then
+    if [ -f `brew --prefix`/etc/profile.d/z.sh ]; then
+        . `brew --prefix`/etc/profile.d/z.sh
+    fi
 fi
 
 if [ -d "$HOME/.secrets" ] ; then
