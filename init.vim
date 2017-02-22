@@ -9,6 +9,16 @@ Plug 'fatih/vim-go'
 Plug 'dietsche/vim-lastplace'
 call plug#end()
 
+
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Linux\n"
+    " Terminator cursor workaround: https://github.com/neovim/neovim/issues/6062
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
+  endif
+endif
+
+
 " Color column right after tw
 set colorcolumn=+1
 
