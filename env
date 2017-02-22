@@ -14,7 +14,10 @@ if [ -d "/usr/local/sbin" ] ; then
 fi
 
 # Mac Homebrew completion
-exists() { [ ! -z `which "$1"` ]; }
+#exists() { [ ! -z `which "$1"` ]; }
+function exists {
+    whence -w $1 > /dev/null
+}
 if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
     # assume Bash
     if exists brew; then

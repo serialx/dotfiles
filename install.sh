@@ -29,6 +29,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         echo "Installing oh-my-zsh..."
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     fi
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    if [ ! -d $HOME/.oh-my-zsh ]; then
+        # assume Bash, then we don't have zsh yet
+        echo "Installing oh-my-zsh..."
+        sudo apt install zsh git-core
+        wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+        chsh -s `which zsh`
+    fi
 fi
 
 
