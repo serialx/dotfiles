@@ -10,8 +10,8 @@
 	st = status
 	co = checkout
 	#l = log --graph --all --color --oneline --decorate
-	l = log --graph --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
-	lb = log --graph --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	l = log --graph --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(dim normal)<%ae>%Creset' --abbrev-commit --all
+	lb = log --graph --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(dim normal)<%ae>%Creset' --abbrev-commit
 
 [core]
 	excludesfile = ~/.gitignore
