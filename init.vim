@@ -91,8 +91,11 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|node_modules|venv$'
 au FileType python setl ts=8 sw=4 sts=4 et
 au FileType ruby setl ts=8 sw=2 sts=2 et
 au FileType html setl ts=8 sw=2 sts=2 et
+au FileType yaml setl ts=8 sw=2 sts=2 et
 au FileType json setl ts=8 sw=2 sts=2 et
+au FileType tf setl ts=8 sw=2 sts=2 et
 au FileType javascript setl ts=8 sw=2 sts=2 et
 au FileType go setl lcs=tab:\ \ ,trail:· ts=4 sw=4 noet
 au FileType sh setl ts=8 sw=4 sts=4 et
 au FileType tex setl ts=8 sw=2 sts=2 et tw=78
+au FileType md setl ts=8 sw=2 sts=2 et tw=78
