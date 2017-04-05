@@ -52,6 +52,7 @@ export PATH="$PATH:${GOPATH}/bin/"
 # Android
 export NDK_ROOT=$HOME/workspace/android-ndk-r10c
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
@@ -98,3 +99,6 @@ fi
 if [ -d "$HOME/.secrets" ] ; then
     source $HOME/.secrets
 fi
+
+# mono (mac)
+export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
