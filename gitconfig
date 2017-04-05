@@ -3,10 +3,12 @@
 	email = sungjinhong@devsisters.com
 
 [alias]
-	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	up = !git pull --autostash --rebase --prune $@ && git submodule update --init --recursive
+	ds = diff --staged
+	ci = commit -v
+	cia = commit -v -a
 	st = status
 	co = checkout
-	cia = commit -a
 	#l = log --graph --all --color --oneline --decorate
 	l = log --graph --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
 	lb = log --graph --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
