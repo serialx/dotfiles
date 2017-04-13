@@ -35,7 +35,7 @@ brew install binutils
 brew install nmap
 brew install xz
 
-brew install ack
+brew install ag
 brew install git
 brew install git-lfs
 brew install p7zip
