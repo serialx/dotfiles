@@ -7,6 +7,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'fatih/molokai'
 Plug 'fatih/vim-go'
 Plug 'dietsche/vim-lastplace'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 
