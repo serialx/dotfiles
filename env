@@ -97,7 +97,8 @@ if exists brew; then
     fi
 fi
 
-if [ -d "$HOME/.secrets" ] ; then
+# secret env
+if [ -f "$HOME/.secrets" ] ; then
     source $HOME/.secrets
 fi
 
