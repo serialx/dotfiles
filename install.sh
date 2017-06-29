@@ -125,6 +125,12 @@ if [ ! -f $HOME/.config/nvim/autoload/plug.vim ]; then
     (cd $HOME/.config/nvim/plugged/YouCompleteMe; ./install.py)
 fi
 
+# Install SCM Breeze
+if [ ! -f "$HOME/.scm_breeze/scm_breeze.sh" ]; then
+    git clone git://github.com/scmbreeze/scm_breeze.git $HOME/.scm_breeze
+    $HOME/.scm_breeze/install.sh
+fi
+
 ################################################################################
 ##################################  ALIAS  #####################################
 ################################################################################
