@@ -34,6 +34,10 @@ if has('mac')
   set clipboard=unnamed
 endif
 
+" Never lose clipboard when deleting text
+nnoremap p "0p
+nnoremap P "0P
+
 " enable buffer change without saving
 set hidden
 
