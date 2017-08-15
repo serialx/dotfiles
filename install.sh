@@ -7,6 +7,8 @@ if [ "$1" == "-f" ]; then
     FORCE=1
 fi
 
+PIP=pip
+
 DOTFILES=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 echo Dotfiles script dir: $DOTFILES
 
@@ -19,7 +21,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get install python-dev python-pip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install python || true
-    pip install --upgrade pip setuptools
+    PIP=pip2
+    $PIP install --upgrade pip setuptools
 fi
 
 # Install zsh
@@ -82,12 +85,12 @@ install_dotfile tmux.conf
 ################################################################################
 
 # Install tools
-if [ "$(pip show awscli)" == "" ]; then
+if [ "$($PIP show awscli)" == "" ]; then
     echo "Installing awscli..."
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        sudo pip install -q -U awscli
+        sudo $PIP install -q -U awscli
     elif [[ "$OSTYPE" == "darwin"* ]]; then
-        pip install -q -U awscli
+        $PIP install -q -U awscli
     fi
 fi
 
@@ -106,9 +109,9 @@ ln -fs $DOTFILES/init.vim $HOME/.config/nvim/init.vim
 
 # Install neovim python support
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    sudo pip install -q -U neovim
+    sudo $PIP install -q -U neovim
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    pip install -q -U neovim
+    $PIP install -q -U neovim
 fi
 
 # Install plug for neovim
