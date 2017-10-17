@@ -38,6 +38,21 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
+# Automatic venv activation
+# Support for bash
+PROMPT_COMMAND='prompt'
+
+# Mirrored support for zsh. See: https://superuser.com/questions/735660/whats-the-zsh-equivalent-of-bashs-prompt-command/735969#735969 
+precmd() { eval "$PROMPT_COMMAND" }
+
+function prompt()
+{
+    if [ "$PWD" != "$MYOLDPWD" ]; then
+        MYOLDPWD="$PWD"
+        test -d venv && . venv/bin/activate
+    fi
+}
+
 # Amazon Web Services
 #export AWS_CREDENTIAL_FILE=~/.ec2/credentials
 export AWS_DEFAULT_REGION=ap-northeast-1
