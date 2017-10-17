@@ -17,4 +17,7 @@ notify () {
     say "$*"
 }
 
+# SCM Breeze
+alias gds="gd --staged"
+
 source $HOME/.env
