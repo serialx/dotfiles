@@ -35,8 +35,8 @@ if has('mac')
 endif
 
 " Never lose clipboard when deleting text
-nnoremap p "0p
-nnoremap P "0P
+map <Leader>p "0p
+map <Leader>P "0P
 
 " enable buffer change without saving
 set hidden
