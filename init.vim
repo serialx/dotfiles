@@ -8,6 +8,7 @@ Plug 'fatih/molokai'
 Plug 'fatih/vim-go'
 Plug 'dietsche/vim-lastplace'
 Plug 'rust-lang/rust.vim'
+Plug 'posva/vim-vue'
 call plug#end()
 
 
@@ -94,6 +95,7 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|node_modules|venv$'
 
 " autocmd
 au FileType python setl ts=8 sw=4 sts=4 et
+au FileType vue setl ts=8 sw=2 sts=2 et
 au FileType ruby setl ts=8 sw=2 sts=2 et
 au FileType html setl ts=8 sw=2 sts=2 et
 au FileType yaml setl ts=8 sw=2 sts=2 et
