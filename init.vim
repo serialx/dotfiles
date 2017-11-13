@@ -1,6 +1,5 @@
 
 call plug#begin()
-Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
@@ -9,6 +8,7 @@ Plug 'fatih/vim-go'
 Plug 'dietsche/vim-lastplace'
 Plug 'rust-lang/rust.vim'
 Plug 'posva/vim-vue'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
 
@@ -106,3 +106,6 @@ au FileType go setl lcs=tab:\ \ ,trail:· ts=4 sw=4 noet
 au FileType sh setl ts=8 sw=4 sts=4 et
 au FileType tex setl ts=8 sw=2 sts=2 et tw=78
 au FileType md setl ts=8 sw=2 sts=2 et tw=78
+
+" fzf
+map <c-p> :FZF<CR>
