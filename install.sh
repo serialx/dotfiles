@@ -134,6 +134,13 @@ if [ ! -f "$HOME/.scm_breeze/scm_breeze.sh" ]; then
     $HOME/.scm_breeze/install.sh
 fi
 
+# Install SCM Breeze
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    echo "No fzf install support in linux yet"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install fzf
+fi
+
 ################################################################################
 ##################################  ALIAS  #####################################
 ################################################################################
