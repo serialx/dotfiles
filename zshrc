@@ -87,3 +87,5 @@ SAVEHIST=1000 # saved history
 #HISTFILE=~/.zshistory # history file
 
 source $HOME/.aliases
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
