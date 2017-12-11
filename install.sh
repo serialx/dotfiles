@@ -101,7 +101,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get update
     sudo apt-get install neovim
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install --HEAD neovim/neovim/neovim
+    brew install neovim
 fi
 
 mkdir -p $HOME/.config/nvim/autoload
