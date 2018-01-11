@@ -131,3 +131,6 @@ if [ -f '/Users/serialx/workspace/sandbox/google-cloud-sdk/completion.zsh.inc' ]
 
 # SCM Breeze
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
+# Terraform Cache
+export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"

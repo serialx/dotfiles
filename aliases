@@ -20,4 +20,7 @@ notify () {
 # SCM Breeze
 alias gds="gd --staged"
 
+# Terraform
+alias tf=terraform
+
 source $HOME/.env
