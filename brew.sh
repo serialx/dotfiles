@@ -55,5 +55,7 @@ brew install zopfli
 
 brew install z
 
+brew install ruby
+
 # Remove outdated versions from the cellar.
 brew cleanup
