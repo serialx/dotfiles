@@ -59,5 +59,9 @@ brew install z
 brew install ruby
 brew install graphviz
 
+# Company related
+brew install terraform
+brew install vault
+
 # Remove outdated versions from the cellar.
 brew cleanup
