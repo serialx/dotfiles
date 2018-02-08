@@ -15,7 +15,7 @@ function go_get_install {
 go_get_install "github.com/nsf/gocode"
 go_get_install "golang.org/x/tools/cmd/goimports"
 go_get_install "github.com/rogpeppe/godef"
-go_get_install "golang.org/x/tools/cmd/oracle"
+go_get_install "golang.org/x/tools/cmd/guru"
 go_get_install "golang.org/x/tools/cmd/gorename"
 go_get_install "golang.org/x/tools/cmd/gomvpkg"
 go_get_install "golang.org/x/tools/cmd/cover"

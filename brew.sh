@@ -7,10 +7,11 @@
 brew update
 
 # Upgrade any already-installed formulae.
-brew upgrade --all
+brew upgrade
 
 # Cask Install
-brew cask install java
+#brew cask install java  # installs Java 9
+brew cask install caskroom/versions/java8
 
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -56,6 +57,7 @@ brew install zopfli
 brew install z
 
 brew install ruby
+brew install graphviz
 
 # Remove outdated versions from the cellar.
 brew cleanup

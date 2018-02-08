@@ -94,6 +94,16 @@ if [ "$($PIP show awscli)" == "" ]; then
     fi
 fi
 
+# Install cmake (for vim YCM)
+if [ "$($PIP show awscli)" == "" ]; then
+    echo "Installing cmake..."
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        sudo apt-get install cmake
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        brew install cmake
+    fi
+fi
+
 # Install neovim
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get install software-properties-common

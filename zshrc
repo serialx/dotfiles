@@ -89,3 +89,5 @@ SAVEHIST=1000 # saved history
 source $HOME/.aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -s "/Users/serialx/.scm_breeze/scm_breeze.sh" ] && source "/Users/serialx/.scm_breeze/scm_breeze.sh"
