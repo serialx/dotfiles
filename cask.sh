@@ -12,4 +12,4 @@ brew cask install caskroom/versions/java8
 brew cask install sequel-pro
 brew cask install slack
 brew cask install iterm2
-
+brew cask install iina
