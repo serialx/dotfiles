@@ -59,6 +59,10 @@ brew install z
 brew install ruby
 brew install graphviz
 
+# tag + rg integration: https://github.com/aykamko/tag
+brew tap aykamko/tag-ag
+brew install tag-ag
+
 # Company related
 brew install terraform
 brew install vault
