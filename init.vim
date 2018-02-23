@@ -112,3 +112,7 @@ let g:terraform_fmt_on_save = 1
 
 " fzf
 map <c-p> :FZF<CR>
+
+" Syntax cleanup
+noremap <Leader>s <Esc>:syntax sync fromstart<CR>
+inoremap <Leader>s <C-o>:syntax sync fromstart<CR>
