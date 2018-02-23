@@ -58,6 +58,7 @@ brew install z
 
 brew install ruby
 brew install graphviz
+brew install jq
 
 # tag + rg integration: https://github.com/aykamko/tag
 brew tap aykamko/tag-ag
