@@ -10,6 +10,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'posva/vim-vue'
 Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 call plug#end()
 
@@ -112,6 +113,12 @@ let g:terraform_fmt_on_save = 1
 
 " fzf
 map <c-p> :FZF<CR>
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 " Syntax cleanup
 noremap <Leader>s <Esc>:syntax sync fromstart<CR>
