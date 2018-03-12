@@ -39,8 +39,20 @@ if has('mac')
 endif
 
 " Never lose clipboard when deleting text
-map <Leader>p "0p
-map <Leader>P "0P
+let s:putSwap = 1
+function TogglePutSwap()
+    if s:putSwap
+        xnoremap p "_dP
+        let s:putSwap = 0
+        echo 'noreplace put'
+    else
+        silent! xunmap p
+        let s:putSwap = 1
+        echo 'replace put'
+    endif
+    return
+endfunction
+noremap ,p :call TogglePutSwap()<cr>
 
 " enable buffer change without saving
 set hidden
