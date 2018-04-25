@@ -16,12 +16,12 @@ echo Dotfiles script dir: $DOTFILES
 ##############################  PREREQUISITES  #################################
 ################################################################################
 
-# Install Python 2 from homebrew. We need to do this before nvim
+# Install Python 3 from homebrew. We need to do this before nvim
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    sudo apt-get install python-dev python-pip
+    sudo apt-get install python3-dev python3-pip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install python || true
-    PIP=pip2
+    PIP=pip3
     $PIP install --upgrade pip setuptools
 fi
 

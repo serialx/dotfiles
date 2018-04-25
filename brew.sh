@@ -40,7 +40,6 @@ brew install binutils
 brew install nmap
 brew install xz
 
-brew install rg
 brew install git
 brew install git-lfs
 brew install p7zip
@@ -60,6 +59,10 @@ brew install ruby
 brew install graphviz
 brew install jq
 
+# rg / fd
+brew install rg
+brew install fd
+
 # tag + rg integration: https://github.com/aykamko/tag
 brew tap aykamko/tag-ag
 brew install tag-ag
@@ -67,6 +70,7 @@ brew install tag-ag
 # Company related
 brew install terraform
 brew install vault
+brew install kubectl
 
 # Remove outdated versions from the cellar.
 brew cleanup

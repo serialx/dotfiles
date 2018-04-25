@@ -13,3 +13,4 @@ brew cask install sequel-pro
 brew cask install slack
 brew cask install iterm2
 brew cask install iina
+brew cask install jetbrains-toolbox
