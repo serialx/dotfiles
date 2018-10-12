@@ -1,6 +1,7 @@
 [user]
 	name = Brian Hong
 	email = sungjinhong@devsisters.com
+	signingkey = 705A6DC6EB70B0DA217E30BFF1870D7690DF681A
 
 [alias]
 	up = !git pull --autostash --rebase --prune $@ && git submodule update --init --recursive
@@ -21,3 +22,4 @@
 	ui = auto
 [commit]
 	verbose = true
+	gpgsign = true
