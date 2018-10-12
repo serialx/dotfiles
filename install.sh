@@ -122,6 +122,16 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     $PIP install -q -U neovim
 fi
 
+# GnuPG
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    # TODO(serialx): Add GnuPG for Linux
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install gnupg
+    brew install pinentry-mac
+    echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+    killall gpg-agent
+fi
+
 # Install plug for neovim
 if [ ! -f $HOME/.config/nvim/autoload/plug.vim ]; then
     echo Installing vim plug...
