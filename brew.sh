@@ -11,7 +11,8 @@ brew upgrade
 
 # Cask Install
 #brew cask install java  # installs Java 9
-brew cask install caskroom/versions/java8
+#brew cask install caskroom/versions/java8
+brew cask install adoptopenjdk/openjdk/adoptopenjdk8
 
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -26,10 +27,10 @@ brew install findutils
 brew install gnu-sed --with-default-names
 
 # Install `wget` with IRI support.
-brew install wget --with-iri
+brew install wget
 
 # Install more recent versions of some OS X tools.
-brew install vim --with-override-system-vi
+#brew install vim --with-override-system-vi
 brew install grep
 brew install openssh
 brew install screen
@@ -71,6 +72,8 @@ brew install tag-ag
 brew install terraform
 brew install vault
 brew install kubectl
+brew tap versent/homebrew-taps
+brew install saml2aws
 
 # Remove outdated versions from the cellar.
 brew cleanup
