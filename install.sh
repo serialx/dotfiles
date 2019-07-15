@@ -124,26 +124,25 @@ fi
 
 # GnuPG
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    echo "Skipping GnuPG installation for Linux"
     # TODO(serialx): Add GnuPG for Linux
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install gnupg
     brew install pinentry-mac
+    mkdir -p ~/.gnupg
     echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
-    killall gpg-agent
+    killall gpg-agent || true
 fi
 
 # Install plug for neovim
 if [ ! -f $HOME/.config/nvim/autoload/plug.vim ]; then
-    echo Installing vim plug...
+    echo "Installing vim plug..."
     curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-    echo Installing vim plugins...
+    echo "Installing vim plugins..."
     nvim +PlugInstall +qa
     reset  # Reset as vim can cause terminal to glitch
-
-    # Install YouCompleteMe
-    (cd $HOME/.config/nvim/plugged/YouCompleteMe; ./install.py)
 fi
 
 # Install SCM Breeze
