@@ -18,6 +18,7 @@ brew cask install iterm2
 brew cask install iina
 brew cask install jetbrains-toolbox
 brew cask install docker
+brew cask install keybase
 
 # Use mouse M4 M5 buttons
 brew cask install sensiblesidebuttons
