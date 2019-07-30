@@ -17,6 +17,7 @@ brew cask install slack
 brew cask install iterm2
 brew cask install iina
 brew cask install jetbrains-toolbox
+brew cask install visual-studio-code
 brew cask install docker
 brew cask install keybase
 
