@@ -71,7 +71,7 @@ brew install tag-ag
 # Company related
 brew install terraform
 brew install vault
-brew install kubectl
+brew install kubectl kubectx kube-ps1
 brew tap versent/homebrew-taps
 brew install saml2aws
 
