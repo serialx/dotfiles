@@ -23,7 +23,7 @@ Bundle 'kien/ctrlp.vim'
 
 "Bundle 'kevinw/pyflakes-vim'
 Bundle 'fholgado/minibufexpl.vim'
-Bundle 'scrooloose/nerdtree'
+"Bundle 'scrooloose/nerdtree'
 "Bundle 'ervandew/supertab'  " Obsolete by YouCompleteMe
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-fugitive'
@@ -37,6 +37,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'scrooloose/syntastic'
 Bundle 'cstrahan/vim-capnp'
+Bundle 'hashivim/vim-terraform'
 
 "Themes
 Bundle 'altercation/vim-colors-solarized'
