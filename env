@@ -134,3 +134,6 @@ if [ -f '/Users/serialx/workspace/sandbox/google-cloud-sdk/completion.zsh.inc' ]
 
 # Terraform Cache
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+
+# Ruby (Homebrew)
+export PATH="/usr/local/opt/ruby/bin:$PATH"
