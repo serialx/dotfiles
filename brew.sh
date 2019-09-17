@@ -12,7 +12,8 @@ brew upgrade
 # Cask Install
 #brew cask install java  # installs Java 9
 #brew cask install caskroom/versions/java8
-brew cask install adoptopenjdk/openjdk/adoptopenjdk8
+#brew cask install adoptopenjdk/openjdk/adoptopenjdk8
+brew install homebrew/cask-versions/adoptopenjdk8
 
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -74,6 +75,7 @@ brew install vault
 brew install kubectl kubectx kube-ps1
 brew tap versent/homebrew-taps
 brew install saml2aws
+brew install derailed/k9s/k9s
 
 # Remove outdated versions from the cellar.
 brew cleanup

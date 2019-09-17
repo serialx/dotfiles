@@ -7,11 +7,9 @@ brew update
 brew upgrade
 
 # Cask Install
-#brew cask install java  # installs Java 9
 brew cask install google-chrome
 brew cask install firefox
 brew cask install jetbrains-toolbox
-brew cask install caskroom/versions/java8
 brew cask install sequel-pro
 brew cask install slack
 brew cask install iterm2
