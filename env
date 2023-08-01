@@ -13,6 +13,9 @@ if [ -d "/usr/local/sbin" ] ; then
     PATH="/usr/local/sbin:$PATH"
 fi
 
+# set Homebrew PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Mac Homebrew completion
 exists() { [ ! -z `which "$1"` ]; }
 #function exists {
