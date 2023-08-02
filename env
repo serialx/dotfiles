@@ -140,3 +140,6 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 # Ruby (Homebrew)
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+# GPG TTY
+export GPG_TTY=$(tty)
