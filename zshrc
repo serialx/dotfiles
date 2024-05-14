@@ -91,11 +91,4 @@ source $HOME/.aliases
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# tag: https://github.com/aykamko/tag
-if (( $+commands[tag] )); then
-  export TAG_SEARCH_PROG=rg
-  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
-  alias rg=tag
-fi
-
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"

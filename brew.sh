@@ -13,7 +13,10 @@ brew upgrade
 #brew cask install java  # installs Java 9
 #brew cask install caskroom/versions/java8
 #brew cask install adoptopenjdk/openjdk/adoptopenjdk8
-brew install homebrew/cask-versions/adoptopenjdk8
+#brew install homebrew/cask-versions/adoptopenjdk8
+#brew install java
+brew tap adoptopenjdk/openjdk
+brew install --cask adoptopenjdk8  # Need Java 8 for Unity
 
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -57,7 +60,7 @@ brew install zopfli
 
 brew install z
 
-brew install ruby
+#brew install ruby
 brew install graphviz
 brew install jq
 
@@ -75,7 +78,7 @@ brew install vault
 brew install kubectl kubectx kube-ps1
 brew tap versent/homebrew-taps
 brew install saml2aws
-brew install derailed/k9s/k9s
+#brew install derailed/k9s/k9s
 
 # Remove outdated versions from the cellar.
 brew cleanup

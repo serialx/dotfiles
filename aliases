@@ -25,9 +25,22 @@ alias tf=terraform
 
 # Mac Power Usage
 powerstat() {
-    b=$(system_profiler SPPowerDataType)
-    power=$(echo "$b" | grep 'Wattage (W):' | cut -d ':' -f 2 | xargs)
-    echo "Total Power: $power W"
+    powerdatatype=$(system_profiler SPPowerDataType)
+    power=$(echo "$powerdatatype" | grep 'Wattage (W):' | cut -d ':' -f 2 | xargs)
+
+    smartbat=$(ioreg -rw0 -a -c AppleSmartBattery)
+    adapterpower=$(echo "$smartbat" | plutil -extract '0.BatteryData.AdapterPower' raw - | xargs -I %  lldb --batch -o "print/f %" | grep -o '$0 = [0-9.]*' | cut -c 6-)
+    systempower=$(echo "$smartbat" | plutil -extract '0.BatteryData.SystemPower' raw - | xargs -I %  lldb --batch -o "print/f %" | grep -o '$0 = [0-9.]*' | cut -c 6-)
+
+    echo "Adapter Power: $adapterpower W"
+    echo "System Power:  $systempower W"
+    echo "Total Power:   $power W"
 }
+
+if (( $+commands[tag] )); then
+  export TAG_SEARCH_PROG=rg  # replace with rg for ripgrep
+  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
+  alias rg=tag  # replace with rg for ripgrep
+fi
 
 source $HOME/.env
