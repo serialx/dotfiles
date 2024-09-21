@@ -48,7 +48,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vault kubectl)
+plugins=(git kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,6 +89,8 @@ SAVEHIST=1000 # saved history
 source $HOME/.aliases
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /opt/homebrew/opt/fzf/bin/fzf ] && eval "$(fzf --zsh)"
 
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
+[ -s "/Users/serialx/.scm_breeze/scm_breeze.sh" ] && source "/Users/serialx/.scm_breeze/scm_breeze.sh"

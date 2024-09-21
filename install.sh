@@ -21,8 +21,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get install python3-dev python3-pip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install python || true
-    PIP=pip3
-    $PIP install --upgrade pip setuptools
+    brew install pipx
+    PIP=pipx
+    #$PIP install --upgrade pip setuptools
 fi
 
 # Install zsh
@@ -84,24 +85,6 @@ install_dotfile tmux.conf
 ##################################  TOOLS  #####################################
 ################################################################################
 
-# Install tools
-if [ "$($PIP show awscli)" == "" ]; then
-    echo "Installing awscli..."
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        sudo $PIP install -q -U awscli
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        $PIP install -q -U awscli
-    fi
-fi
-
-# Install cmake (for vim YCM)
-echo "Installing cmake..."
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    sudo apt-get install cmake
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install cmake
-fi
-
 # Install neovim
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get install software-properties-common
@@ -115,12 +98,12 @@ fi
 mkdir -p $HOME/.config/nvim/autoload
 ln -fs $DOTFILES/init.vim $HOME/.config/nvim/init.vim
 
-# Install neovim python support
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    sudo $PIP install -q -U neovim
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    $PIP install -q -U neovim
-fi
+# # Install neovim python support
+# if [[ "$OSTYPE" == "linux-gnu" ]]; then
+#     python3 -m pip install --user --upgrade pynvim
+# elif [[ "$OSTYPE" == "darwin"* ]]; then
+#     python3 -m pip install --user --upgrade pynvim
+# fi
 
 # GnuPG
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -147,11 +130,11 @@ fi
 
 # Install SCM Breeze
 if [ ! -f "$HOME/.scm_breeze/scm_breeze.sh" ]; then
-    git clone git://github.com/scmbreeze/scm_breeze.git $HOME/.scm_breeze
+    git clone https://github.com/scmbreeze/scm_breeze.git $HOME/.scm_breeze
     $HOME/.scm_breeze/install.sh
 fi
 
-# Install SCM Breeze
+# Install fzf
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     echo "No fzf install support in linux yet"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -184,3 +167,5 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     install_alias $HOME/.bash_profile
 fi
 
+# Install pyenv
+brew install pyenv
