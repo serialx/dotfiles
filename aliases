@@ -18,7 +18,7 @@ notify () {
 }
 
 # SCM Breeze
-alias gds="gd --staged"
+#alias gds="gd --staged"
 
 # Terraform
 alias tf=terraform
@@ -43,4 +43,4 @@ if (( $+commands[tag] )); then
   alias rg=tag  # replace with rg for ripgrep
 fi
 
-source $HOME/.env
+source $HOME/.my_env

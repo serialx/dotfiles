@@ -91,6 +91,3 @@ source $HOME/.aliases
 # fzf
 [ -f /opt/homebrew/opt/fzf/bin/fzf ] && eval "$(fzf --zsh)"
 
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
-
-[ -s "/Users/serialx/.scm_breeze/scm_breeze.sh" ] && source "/Users/serialx/.scm_breeze/scm_breeze.sh"
