@@ -133,7 +133,7 @@ if [ -f '/Users/serialx/workspace/sandbox/google-cloud-sdk/path.zsh.inc' ]; then
 if [ -f '/Users/serialx/workspace/sandbox/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/serialx/workspace/sandbox/google-cloud-sdk/completion.zsh.inc'; fi
 
 # SCM Breeze
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+#[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 # Terraform Cache
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
@@ -153,3 +153,9 @@ eval "$(pyenv init -)"
 
 # pipx bin path
 export PATH="$HOME/.local/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# PostgreSQL 15
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"

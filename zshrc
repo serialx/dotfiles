@@ -91,3 +91,16 @@ source $HOME/.aliases
 # fzf
 [ -f /opt/homebrew/opt/fzf/bin/fzf ] && eval "$(fzf --zsh)"
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/serialx/.cache/lm-studio/bin"
+# End of LM Studio CLI section
+
+
+# pnpm
+export PNPM_HOME="/Users/serialx/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
