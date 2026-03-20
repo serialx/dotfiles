@@ -144,3 +144,6 @@ command! -bang -nargs=* Rg
 " Syntax cleanup
 noremap <Leader>s <Esc>:syntax sync fromstart<CR>
 inoremap <Leader>s <C-o>:syntax sync fromstart<CR>
+
+" For transparent terminals, set bg color to none
+hi Normal guibg=NONE ctermbg=NONE
