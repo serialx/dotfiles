@@ -1,3 +1,5 @@
+" Set venv for python3
+let g:python3_host_prog = expand('~/.config/nvim/venv/bin/python3')
 
 call plug#begin()
 Plug 'vim-airline/vim-airline'
