@@ -37,4 +37,8 @@ powerstat() {
     echo "Total Power:   $power W"
 }
 
+if exists fdfind; then
+    alias fd=fdfind
+fi
+
 source $HOME/.my_env
