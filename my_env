@@ -98,7 +98,7 @@ export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # SCM Breeze
-#[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+[[ $- == *i* ]] && [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 # Terraform Cache
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"

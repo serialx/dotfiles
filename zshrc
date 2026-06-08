@@ -80,12 +80,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-HISTSIZE=5000 # session history size
-SAVEHIST=1000 # saved history
+HISTSIZE=50000 # session history size
+SAVEHIST=10000 # saved history
 #HISTFILE=~/.zshistory # history file
 
 source $HOME/.aliases
 
 # fzf
 [ -f /opt/homebrew/opt/fzf/bin/fzf ] && eval "$(fzf --zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
