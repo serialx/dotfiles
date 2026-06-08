@@ -12,7 +12,10 @@ alias vim=nvim
 # Claude Code
 alias claude='claude --allow-dangerously-skip-permissions --effort max --enable-auto-mode'
 alias myclaude='CLAUDE_CONFIG_DIR=$HOME/.claude-personal claude --allow-dangerously-skip-permissions --effort max --enable-auto-mode'
-alias devbox='kubectl exec -n aio-sandbox pod/aio-sandbox -it -- sudo -u gem env TERM=xterm-256color tmux new -A -s main zsh'
+devbox() {
+    kubectl exec -n aio-sandbox pod/aio-sandbox -it -- \
+        sudo -u gem env TERM=xterm-256color tmux new -A -s "${1:-main}" zsh
+}
 
 notify () {
     osascript -e "display notification \"$*\" sound name \"Glass\" with title \"Shell Notification\""
