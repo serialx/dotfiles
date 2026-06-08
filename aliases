@@ -37,6 +37,9 @@ powerstat() {
     echo "Total Power:   $power W"
 }
 
+# Mac Homebrew completion
+exists() { command -v "$1" >/dev/null 2>&1; }
+
 if exists fdfind; then
     alias fd=fdfind
 fi
