@@ -37,10 +37,4 @@ powerstat() {
     echo "Total Power:   $power W"
 }
 
-if (( $+commands[tag] )); then
-  export TAG_SEARCH_PROG=rg  # replace with rg for ripgrep
-  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
-  alias rg=tag  # replace with rg for ripgrep
-fi
-
 source $HOME/.my_env

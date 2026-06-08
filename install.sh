@@ -17,7 +17,7 @@ echo Dotfiles script dir: $DOTFILES
 ################################################################################
 
 # Install Python 3 from homebrew. We need to do this before nvim
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sudo apt-get install python3-dev python3-pip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install python || true
@@ -27,20 +27,19 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Install zsh
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [ ! -d $HOME/.oh-my-zsh ]; then
         # assume Bash, then we don't have zsh yet
-        echo "Installing oh-my-zsh..."
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    fi
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    if [ ! -d $HOME/.oh-my-zsh ]; then
-        # assume Bash, then we don't have zsh yet
-        echo "Installing oh-my-zsh..."
-        sudo apt install zsh git-core
-        wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+        echo "Installing zsh..."
+        sudo apt install zsh
         chsh -s `which zsh`
     fi
+fi
+
+if [ ! -d $HOME/.oh-my-zsh ]; then
+    # assume Bash, then we don't have zsh yet
+    echo "Installing oh-my-zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 
@@ -86,7 +85,7 @@ install_dotfile tmux.conf
 ################################################################################
 
 # Install neovim
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sudo apt-get install software-properties-common
     sudo add-apt-repository ppa:neovim-ppa/unstable
     sudo apt-get update
@@ -99,14 +98,14 @@ mkdir -p $HOME/.config/nvim/autoload
 ln -fs $DOTFILES/init.vim $HOME/.config/nvim/init.vim
 
 # # Install neovim python support
-# if [[ "$OSTYPE" == "linux-gnu" ]]; then
+# if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 #     python3 -m pip install --user --upgrade pynvim
 # elif [[ "$OSTYPE" == "darwin"* ]]; then
 #     python3 -m pip install --user --upgrade pynvim
 # fi
 
 # GnuPG
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     echo "Skipping GnuPG installation for Linux"
     # TODO(serialx): Add GnuPG for Linux
 elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -135,7 +134,7 @@ if [ ! -f "$HOME/.scm_breeze/scm_breeze.sh" ]; then
 fi
 
 # Install fzf
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     echo "No fzf install support in linux yet"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install fzf
@@ -161,11 +160,8 @@ function install_alias {
 }
 
 # We don't need to install aliases in zsh because it's already there
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     install_alias $HOME/.bashrc
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     install_alias $HOME/.bash_profile
 fi
-
-# Install pyenv
-brew install pyenv

@@ -53,8 +53,6 @@ plugins=(git kubectl)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-export PATH="/usr/local/bin:/Users/serialx/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -91,16 +89,3 @@ source $HOME/.aliases
 # fzf
 [ -f /opt/homebrew/opt/fzf/bin/fzf ] && eval "$(fzf --zsh)"
 
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/serialx/.cache/lm-studio/bin"
-# End of LM Studio CLI section
-
-
-# pnpm
-export PNPM_HOME="/Users/serialx/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end

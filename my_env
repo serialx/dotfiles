@@ -13,21 +13,12 @@ if [ -d "/usr/local/sbin" ] ; then
     PATH="/usr/local/sbin:$PATH"
 fi
 
-# set Homebrew PATH
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # Mac Homebrew completion
-exists() { [ ! -z `which "$1"` ]; }
-#function exists {
-#    whence -w $1 > /dev/null
-#}
-if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
-    # assume Bash
-    if exists brew; then
-        if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
-            source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-        fi
-    fi
+exists() { command -v "$1" >/dev/null 2>&1; }
+
+# set Homebrew PATH
+if exists brew; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # EDITOR configuration (for Git and etc.)
@@ -106,12 +97,6 @@ export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/serialx/workspace/sandbox/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/serialx/workspace/sandbox/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/serialx/workspace/sandbox/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/serialx/workspace/sandbox/google-cloud-sdk/completion.zsh.inc'; fi
-
 # SCM Breeze
 #[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
@@ -121,21 +106,11 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 # Ruby (Homebrew)
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
-# PDM
-export PATH=/Users/serialx/Library/Python/3.11/bin:$PATH
-
 # GPG TTY
 export GPG_TTY=$(tty)
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # pipx bin path
 export PATH="$HOME/.local/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# PostgreSQL 15
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
