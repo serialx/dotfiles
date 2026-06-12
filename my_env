@@ -128,9 +128,11 @@ if [ -d "$HOME/.local/share/pnpm" ] ; then
 fi
 # pnpm end
 
-NPM_BIN_DIR="/opt/fnm/node-versions/v22.22.3/installation/bin/"
-if [ -d "$NPM_BIN_DIR" ] ; then
-    export PATH="$NPM_BIN_DIR:$PATH"
+# fnm (Node)
+if [ -d /opt/fnm ] ; then
+    export FNM_DIR=/opt/fnm
 fi
-
+if exists fnm ; then
+    eval "$(fnm env)"
+fi
 
