@@ -10,8 +10,8 @@ alias vi=nvim
 alias vim=nvim
 
 # Claude Code
-alias claude='claude --allow-dangerously-skip-permissions --effort max --enable-auto-mode'
-alias myclaude='CLAUDE_CONFIG_DIR=$HOME/.claude-personal claude --allow-dangerously-skip-permissions --effort max --enable-auto-mode'
+alias claude='claude --allow-dangerously-skip-permissions'
+alias myclaude='CLAUDE_CONFIG_DIR=$HOME/.claude-personal claude --allow-dangerously-skip-permissions'
 #devbox() {
 #    SESSION_NAME="${1:-main}"
 #    kubectl exec --context admin@talos-proxmox-cluster -n aio-sandbox pod/aio-sandbox -it -- \
