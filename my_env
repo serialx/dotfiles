@@ -20,6 +20,9 @@ exists() { command -v "$1" >/dev/null 2>&1; }
 if [ -x /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+fi
 
 # EDITOR configuration (for Git and etc.)
 export EDITOR=nvim
@@ -124,3 +127,10 @@ if [ -d "$HOME/.local/share/pnpm" ] ; then
     esac
 fi
 # pnpm end
+
+NPM_BIN_DIR="/opt/fnm/node-versions/v22.22.3/installation/bin/"
+if [ -d "$NPM_BIN_DIR" ] ; then
+    export PATH="$NPM_BIN_DIR:$PATH"
+fi
+
+
