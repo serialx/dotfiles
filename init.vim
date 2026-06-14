@@ -43,9 +43,7 @@ catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 
 " clipboard integration
-if has('mac')
-  set clipboard=unnamed
-endif
+set clipboard=unnamedplus
 
 " Never lose clipboard when deleting text
 let s:putSwap = 1
