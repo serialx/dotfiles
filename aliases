@@ -12,14 +12,10 @@ alias vim=nvim
 # Claude Code
 alias claude='claude --allow-dangerously-skip-permissions'
 alias myclaude='CLAUDE_CONFIG_DIR=$HOME/.claude-personal claude --allow-dangerously-skip-permissions'
-#devbox() {
-#    SESSION_NAME="${1:-main}"
-#    kubectl exec --context admin@talos-proxmox-cluster -n aio-sandbox pod/aio-sandbox -it -- \
-#        env TERM=xterm-256color sudo -iu gem tmux new -A -s "$SESSION_NAME"
-#}
+
 devbox() {
     SESSION_NAME="${1:-main}"
-    mosh gem@aio-sandbox -- tmux new -A -s "$SESSION_NAME"
+    mosh --server='env COLORTERM=truecolor mosh-server' gem@aio-sandbox -- /home/linuxbrew/.linuxbrew/bin/zellij attach --create "$SESSION_NAME"
 }
 
 notify () {
