@@ -72,6 +72,7 @@ function install_dotfile {
 
 install_dotfile zshrc force
 install_dotfile gitconfig
+install_dotfile git.scmbrc
 install_dotfile hgrc
 install_dotfile aliases
 install_dotfile my_env
