@@ -136,3 +136,7 @@ if exists fnm ; then
     eval "$(fnm env)"
 fi
 
+# Show the current directory name in idle Zellij tabs.
+if [ -n "${ZSH_VERSION:-}" ] && [ -n "${ZELLIJ:-}" ]; then
+    ZSH_THEME_TERM_TITLE_IDLE='%1~'
+fi
